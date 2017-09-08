@@ -8,7 +8,7 @@ import java.net.UnknownHostException;
  * @since 2017/8/1
  */
 public class IPUtil {
-    public static String getCurrentIPString()throws UnknownHostException{
-            return InetAddress.getLocalHost().getHostAddress();
+    public static String getCurrentIPString() throws UnknownHostException {
+        return InetAddress.getLocalHost().getHostAddress();
     }
 }
