@@ -138,7 +138,6 @@ public class FileServiceImpl implements IFileService {
         response.setHeader("Accept-Ranges", "bytes");
         response.setHeader("Content-Length", String.valueOf(contentLength));
         ResponseUtils.setContentType(path, response);
-        ResponseUtils.setCacheControl(request,response,dest.lastModified());
         // 构造Content-Range请求头
         switch (rangeSwitch) {
             case 1: {
@@ -164,6 +163,9 @@ public class FileServiceImpl implements IFileService {
             default: {
                 break;
             }
+        }
+        if(!ResponseUtils.setCacheControl(request,response,dest.lastModified())){
+            return;
         }
         try (
                 BufferedOutputStream out = new BufferedOutputStream(response.getOutputStream());
