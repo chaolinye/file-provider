@@ -26,13 +26,6 @@ public class ResponseUtils {
         }
     }
 
-//    public static void setCacheControl(HttpServletResponse response){
-//        Calendar calendar=Calendar.getInstance();
-//        calendar.add(Calendar.YEAR,10);
-//        response.setHeader("Cache-Control","max-age="+(calendar.getTimeInMillis()/1000));
-//        response.setDateHeader("Expires",calendar.getTimeInMillis());
-//        response.addDateHeader("Last-Modified", System.currentTimeMillis());
-//    }
     public static boolean setCacheControl(HttpServletRequest request, HttpServletResponse response, long lastModified){
         long headerTime = request.getDateHeader("If-Modified-Since");
         Calendar calendar=Calendar.getInstance();
