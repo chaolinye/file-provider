@@ -17,10 +17,11 @@ public class ResponseUtils {
 
     static {
         contentTypeMap.put("m4a", "audio/x-m4a");
+        contentTypeMap.put("mp3","audio/mp3");
     }
 
     public static void setContentType(String filePath, HttpServletResponse response) {
-        String type = contentTypeMap.get(FileUtils.getSuffix(filePath));
+        String type = contentTypeMap.get(FileUtils.getSuffix(filePath).toLowerCase());
         if (type != null) {
             response.setHeader("Content-Type", type);
         }
